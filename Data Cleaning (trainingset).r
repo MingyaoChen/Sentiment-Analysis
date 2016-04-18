@@ -6,7 +6,6 @@
 #Note:
 #1. In both given training set and train set, each word has a label, e.g."great==A, Galway==^"
 #2. This script will only keep the suitable words for this analysis after classify the labels. 
-#3. This script 
 #End
 
 ######################1 Preparation#####################
@@ -48,6 +47,7 @@ gsub(".*==|==.*", "", tw_train_1)
 #20. "T": Adverb, delete.
 #21. "X": Adverb, delete.
 #22. "Z": Abbreviation of noun, delete.
+#23. "~": Preposition delete.
 ####################End 1######################
 
 ################2 Keep&Delete labels#################
@@ -63,7 +63,7 @@ tw_train_r <- gsub("==!", "", tw_train_r)
 tw_train_r 
 
 #Delete:
-#",", "#", "N", "^", "P", "O", "@", "G", "$", "S", "D", "L", "&", "U", "T", "Z"
+#",", "#", "N", "^", "P", "O", "@", "G", "$", "S", "D", "L", "&", "U", "T", "Z", "~"
 
 tw_train_r <- gsub("\\S*==, ", "", tw_train_r)
 tw_train_r <- gsub("\\S*==# ", "", tw_train_r)
@@ -82,6 +82,7 @@ tw_train_r <- gsub("\\S*==U ", "", tw_train_r)
 tw_train_r <- gsub("\\S*==T ", "", tw_train_r)
 tw_train_r <- gsub("\\S*==X ", "", tw_train_r)
 tw_train_r <- gsub("\\S*==Z ", "", tw_train_r)
+tw_train_r <- gsub("\\S*==~ ", "", tw_train_r)
 tw_train_r
 ####################End 2#####################
 
