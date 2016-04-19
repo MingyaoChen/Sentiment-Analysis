@@ -100,6 +100,15 @@ tw_train_r <- tolower(tw_train_r)
 tw_train$X.....tfk..N.forum..N......COTY..A.Pool..N.17.........The..D.spinless..A.government..N.propping..V.up..T.cunt....John....Gormley....should..V.get..V.through..P.here..R......URL.Link..V. <- tw_train_r
 #Delete last useless column
 tw_train$John.Gormley <- NULL
+#Set empty rows to NA
+tw_train[tw_train==""] <- NA
+#Delete empty rows
+tw_train <- tw_train[complete.cases(tw_train),]
 #Save
 write.table(tw_train, file = "./TweetsData/pre_train.csv", row.names = F, col.names = F, sep = ",")
 ##################End 3##########################
+
+
+
+
+

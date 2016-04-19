@@ -101,6 +101,10 @@ tw_test_r <- tolower(tw_test_r)
 tw_test$Irish..A.premier..N.Cowen....survives..V.vote..V......Irish..A.PM..N.Brian....Cowen....survives..V.a..D.secret..N.confidence..N.vote..V.on..P.his..D.leadershi..N......URL.Link..V. <- tw_test_r
 #Delete last useless column
 tw_test$Brian.Cowen <- NULL
+#Set empty rows to NA
+tw_test[tw_test==""] <- NA
+#Delete empty rows
+tw_test <- tw_test[complete.cases(tw_test),]
 #Save
 write.table(tw_test, file = "./TweetsData/pre_test.csv", row.names = F, col.names = F, sep = ",")
 ##################End 3##########################
