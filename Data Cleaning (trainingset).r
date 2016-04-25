@@ -26,11 +26,11 @@ gsub(".*==|==.*", "", tw_train_1)
 
 #Compare to the contents of training set, conclude:
 #1. "V": Verb, keep.
-#2. "#": Tags of topic, delete.
+#2. "#": Tags of topic, keep.
 #3. "E": Emotion, keep.
 #4. ",": Punctuation mark, delete.
 #5. "A": Adjective, keep.
-#6. "N": Noun, delete
+#6. "N": Noun, keep.
 #7. "R": Adjective, keep.
 #8. "^": Special name, delete.
 #9. "P": Preposition, delete.
@@ -53,21 +53,21 @@ gsub(".*==|==.*", "", tw_train_1)
 ################2 Keep&Delete labels#################
 
 #Keep:
-#"V", "E", "A", "R", "!"
+#"V", "E", "A", "R", "!", "N", "#"
 
 tw_train_r <- gsub("==V", "", tw_train_1)
 tw_train_r <- gsub("==E", "", tw_train_r)
 tw_train_r <- gsub("==A", "", tw_train_r)
 tw_train_r <- gsub("==R", "", tw_train_r)
 tw_train_r <- gsub("==!", "", tw_train_r)
+tw_train_r <- gsub("==N", "", tw_train_r)
+tw_train_r <- gsub("==#", "", tw_train_r)
 tw_train_r 
 
 #Delete:
-#",", "#", "N", "^", "P", "O", "@", "G", "$", "S", "D", "L", "&", "U", "T", "Z", "~"
+#",", "^", "P", "O", "@", "G", "$", "S", "D", "L", "&", "U", "T", "Z", "~"
 
 tw_train_r <- gsub("\\S*==, ", "", tw_train_r)
-tw_train_r <- gsub("\\S*==# ", "", tw_train_r)
-tw_train_r <- gsub("\\S*==N ", "", tw_train_r)
 tw_train_r <- gsub("\\S*==\\^ ", "", tw_train_r)
 tw_train_r <- gsub("\\S*==P ", "", tw_train_r)
 tw_train_r <- gsub("\\S*==O ", "", tw_train_r)
